@@ -21,6 +21,7 @@ namespace SimpleAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
+            // https://www.usatoday.com/story/sports/2017/04/17/top-athletes-uniform-numbers/100339394/
             switch (id)
             {
                 case 1:
@@ -33,6 +34,8 @@ namespace SimpleAPI.Controllers
                     return "Lou Gehrig";
                 case 5:
                     return "Joe DiMaggio";
+                case 6:
+                    return "Julius Erving";
                 case 7:
                     return "Mickey Mantle";
                 case 8:
@@ -43,10 +46,14 @@ namespace SimpleAPI.Controllers
                     return "Walt Frazier";
                 case 12:
                     return "Joe Namath";
+                case 19:
+                    return "Brian Trottier";
+                case 22:
+                    return "Mike Bossy";
                 case 24:
                     return "Willie Mays";
                 case 33:
-                    return "Patrick Ewing";
+                    return "Kareem Abdul-Jabbar";
                 case 37:
                     return "Casey Stengel";
                 case 41:
@@ -55,14 +62,22 @@ namespace SimpleAPI.Controllers
                     return "Jackie Robinson";
                 case 44:
                     return "Reggie Jackson";
+                case 49:
+                    return "Ron Guidry";
+                case 56:
+                    return "Lawrence Taylor";
                 case 66:
                     return "Mario Lemieux";
+                case 68:
+                    return "Jaromir Jagr";
                 case 69:
                     return "Ronnie The Limo Driver";
+                case 72:
+                    return "Carlton Fisk";
                 case 99:
                     return "Wayne Gretzky";
                 default:
-                    return $"No mapping for number {id}";
+                    return $"No mapping for uniform number {id}";
             }
         }
 

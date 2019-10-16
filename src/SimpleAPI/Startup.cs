@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Sample DevOps example found at
+ * https://dotnetplaybook.com/build-test-and-deploy-a-rest-api-with-azure-devops/
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
