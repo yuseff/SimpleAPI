@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SimpleAPI.Persistence.Contexts;
 
 namespace SimpleAPI
 {
     public class Program
     {
+#if false
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
@@ -20,5 +23,24 @@ namespace SimpleAPI
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
+#else
+        public static void Main(string[] args)
+        {
+            var host = BuildWebHost(args);
+
+            using(var scope = host.Services.CreateScope())
+            using(var context = scope.ServiceProvider.GetService<AppDbContext>())
+            {
+                context.Database.EnsureCreated();
+            }
+
+            host.Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>()
+            .Build();
+#endif
     }
 }
